@@ -1,33 +1,39 @@
-const named = (host) => {
-    var list = {};var els = host.querySelectorAll('[name]')
-    if(els==undefined)return ; 
-    for (var i = 0; i < els.length; i++) {
-       var nameValue = els[i].getAttribute('name');
-       list[nameValue] = els[i]
+function ElementUtility(parent){
+    return {
+    get child (){
+        var childObj = {}
+        var childs = parent.querySelectorAll('[name]')
+        if(childs)childs.forEach(child=>{
+            var attr = child.getAttribute('name')
+            childObj[attr] = child
+        })
+        return childObj
+    },
+    methods(obj){
+        var child = this.child
+        var buttons = parent.querySelectorAll('[click]')
+        if(buttons)buttons.forEach(button=>{
+            var attr = button.getAttribute('click')
+            button.addEventListener('click',()=>obj[attr](child))
+        })
     }
-    return list
+}
+}
+
+const html = string => {
+    var wrap = document.createElement('div')
+    wrap.innerHTML=string
+    var element = wrap.firstElementChild
+    var $ = ElementUtility(element)
+    return {
+        element,
+        init(callback){
+            callback(ElementUtility(element));
+            return {element};
+        }
+    }
 }
 
 const id = id => document.getElementById(id)
 
-const html = str => {
-   var el = document.createElement('div')
-   el.innerHTML = str
-   return el.firstElementChild
-}
-
-const component = (htmlCB,initCB) =>{
-var element = htmlCB()
-var child = named(element)
-var methods = initCB(child,element)
-var click = element.querySelectorAll('[click]')
-if(click!=undefined){
-    for (var i = 0; i < click.length; i++) {
-       var nameValue = click[i].getAttribute('click');
-       click[i].addEventListener('click',()=>methods[nameValue](child,element))
-    }
-}
-return element
-}
-
-export {component,html,named,id}
+export {id,html}
