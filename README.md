@@ -1,3 +1,13 @@
+#### html
+`var el = html('<div><input placeholder=email><input placeholder=password></div>')`
+```
+const html = string => {
+    var wrap = document.createElement('div')
+    wrap.innerHTML=string
+    return wrap.firstElementChild
+}
+```
+
 # firebase_9_SDK_global_namespace
 [firebase_namespace.js](https://raw.githubusercontent.com/eddyralston/utility-javascript/main/firebase_9_SDK_global_namespace/build/firebase_namespace.j "")
 #### firestore(*CollectionPath*)
