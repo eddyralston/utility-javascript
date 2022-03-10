@@ -15,6 +15,8 @@
 
 
 ## Example
+must define a variable named firebaseConfig with your 
+firebase config before including the `firebase_namespace.js` script
 ```<!DOCTYPE html>
 <html>
 <head>
