@@ -1,5 +1,5 @@
-#### html
-`var el = html('<div><input placeholder=email><input placeholder=password></div>')`
+## HTML
+`var el = html('<div><input placeholder=email></div>')`
 ```
 const html = string => {
     var wrap = document.createElement('div')
