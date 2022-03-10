@@ -40,7 +40,8 @@ var el = html(`<div>
 ## Example
 must define a variable named firebaseConfig with your 
 firebase config before including the `firebase_namespace.js` script
-```<!DOCTYPE html>
+```javascript
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
