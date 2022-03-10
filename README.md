@@ -1,11 +1,23 @@
-## HTML
-`var el = html('<div><input placeholder=email></div>')`
+# id
+#### Function
+```javascript
+const id = id => document.getElementByID(id)
 ```
+# HTML
+#### Function
+```javascript
 const html = string => {
     var wrap = document.createElement('div')
     wrap.innerHTML=string
     return wrap.firstElementChild
 }
+```
+#### Example
+```javascript
+var el = html(`<div>
+<input placeholder=email>
+<input placeholder=password>
+</div>`)
 ```
 
 # firebase_9_SDK_global_namespace
