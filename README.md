@@ -1,4 +1,5 @@
-# firebase_namespace
+# firebase_9_SDK_global_namespace
+[firebase_namespace.js](https://raw.githubusercontent.com/eddyralston/utility-javascript/main/firebase_9_SDK_global_namespace/build/firebase_namespace.j "")
 #### firestore(*CollectionPath*)
 
 | Argument      | Notes |
