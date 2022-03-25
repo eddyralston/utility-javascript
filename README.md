@@ -1,9 +1,9 @@
-# id
+## id
 #### Function
 ```javascript
 const id = id => document.getElementByID(id)
 ```
-# HTML
+## HTML
 #### Function
 ```javascript
 const html = string => {
@@ -19,7 +19,7 @@ var el = html(`<div>
 <input placeholder=password>
 </div>`)
 ```
-# bind variables to elements (display.js)
+## bind variables to elements (display.js)
 ```Javascript
 function bindData(parent){
     parent.querySelectorAll('[var]').forEach(element => {
@@ -36,7 +36,19 @@ function bindData(parent){
         loop(window)
     });
 }
+```
+#### example
+```html
+<body>
+<script></script>
+<p var="user.name"></p>
 
+<script>
+    var user = {}
+    user.name = 'eddy'
+bindData(document.body)
+</script>
+</body>
 ```
 ```
 # firebase_9_SDK_global_namespace
