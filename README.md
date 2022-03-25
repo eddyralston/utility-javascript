@@ -19,7 +19,26 @@ var el = html(`<div>
 <input placeholder=password>
 </div>`)
 ```
+# bind variables to elements (display.js)
+```Javascript
+function bindData(parent){
+    parent.querySelectorAll('[var]').forEach(element => {
+        var variable = element.getAttribute('var').split('.')
+        var i = 0
+        const loop = (hoist) =>{
+            var newHoist = hoist[variable[i]]
+            if(i<variable.length){
+                i++; loop(newHoist)
+            }else{
+                element.innerText=hoist
+            }
+        }
+        loop(window)
+    });
+}
 
+```
+```
 # firebase_9_SDK_global_namespace
 [firebase_namespace.js](https://raw.githubusercontent.com/eddyralston/utility-javascript/main/firebase_9_SDK_global_namespace/build/firebase_namespace.j "")
 #### firestore(*CollectionPath*)
