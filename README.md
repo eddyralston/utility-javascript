@@ -12,12 +12,38 @@ const html = string => {
     return wrap.firstElementChild
 }
 ```
-#### Example
+### pantry javascript Drivers example
 ```javascript
-var el = html(`<div>
-<input placeholder=email>
-<input placeholder=password>
-</div>`)
+function bucket(bucketName){
+    var PantryID = `ApIkEy`
+    function config(method,data){
+        var base = {
+            method: method,
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }
+        if(data)base.body = JSON.stringify(data)
+        return base
+    }
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    var url = `https://getpantry.cloud/apiv1/pantry/${PantryID}/basket/${bucketName}`
+    return{
+        create(data,callback){
+            fetch(url, config('post',data)).then (res => res.json()).then(callback)
+        },
+        update(data,callback){
+            fetch(url, config('put',data)).then (res => res.json()).then(callback)
+        },
+        get(callback){
+            fetch(url,config('get')).then (res => res.json()).then(callback)
+        },
+        delete(callback){
+            fetch(url,config('delete')).then (res => res.json()).then(callback)
+        }
+    }
+}
 ```
 ## bind variables to elements (display.js)
 ```Javascript
