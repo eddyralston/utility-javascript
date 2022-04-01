@@ -12,6 +12,43 @@ const html = string => {
     return wrap.firstElementChild
 }
 ```
+extended
+```javascript
+const html = string => {
+    var wrap = document.createElement('div')
+    wrap.innerHTML=string
+    var el = wrap.firstElementChild
+    el.child={}
+    el.querySelectorAll('[name]').forEach(ch=>{
+        var name = ch.getAttribute('name')
+        el.child[name] = ch
+    })
+    el.extend=(cb)=>{
+        var methods = cb(el,el.child)
+        el.querySelectorAll('[method]').forEach(ch=>{
+            var method = ch.getAttribute('method')
+            ch.addEventListener('click',()=>methods[method]())
+        })
+        return el
+    }
+    return el
+}
+// --- example
+var input = html(`<div>
+    <ul name="list"></ul>
+    <input name="input" placeholder="name">
+    <button method="add">Add</button>
+    `).extend((el,child)=>{
+        return {
+            add:()=>child.list.append(html(`<li>${child.input.value}</li>`))
+        }
+    })
+
+document.body.append(input)
+
+```
+
+
 ### pantry javascript Drivers example
 ```javascript
 function bucket(bucketName){
